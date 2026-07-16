@@ -9,5 +9,5 @@ router.get("/", (req, res) => {
 });
 
 router.use("/singers", singerRoutes);
-router.use("./actors", actorRoutes);
+router.use("/actors", actorRoutes);
 module.exports = router;
