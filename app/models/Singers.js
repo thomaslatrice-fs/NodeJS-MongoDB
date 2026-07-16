@@ -5,6 +5,7 @@ const singersSchema = new mongoose.Schema(
     name: {
       type: String,
       required: [true, "Singer name is required"],
+      unique: [true, "Only one Singer with this name"],
       trim: true,
       minlength: [2, "Singer name must be at least 2 characters"],
     },

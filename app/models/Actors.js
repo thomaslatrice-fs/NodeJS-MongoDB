@@ -4,6 +4,7 @@ const actorSchema = new mongoose.Schema({
   name: {
     type: String,
     required: [true, "Actor name is required"],
+    unique: [true, "Only one Actor with this name"],
     trim: true,
     minlength: [2, "Actor name must be at least 2 characters"],
   },
