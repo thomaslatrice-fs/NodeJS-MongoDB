@@ -25,10 +25,10 @@ const singersSchema = new mongoose.Schema(
       type: Boolean,
       default: true,
     },
-    featuredActor: {
+    featuredSong: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Actor",
-      required: [true, "A featured actor is required"],
+      ref: "Song",
+      required: [true, "A featured song is required"],
     },
   },
   {

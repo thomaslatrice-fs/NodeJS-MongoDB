@@ -1,4 +1,4 @@
-const getAllActors = async (req, res) => {
+const getAllSongs = async (req, res) => {
   try {
     res.status(200).json({
       success: true,
@@ -11,7 +11,7 @@ const getAllActors = async (req, res) => {
     });
   }
 };
-const getActorById = (req, res) => {
+const getSongById = (req, res) => {
   const { id } = req.params;
   res.status(200).json({
     id,
@@ -20,7 +20,7 @@ const getActorById = (req, res) => {
   });
 };
 
-const createActor = (req, res) => {
+const createSong = (req, res) => {
   const data = req.body;
   console.log("data >>>", data);
   res.status(200).json({
@@ -29,7 +29,7 @@ const createActor = (req, res) => {
   });
 };
 
-const updateActor = (req, res) => {
+const updateSong = (req, res) => {
   const { id } = req.params;
   res.status(200).json({
     id,
@@ -38,7 +38,7 @@ const updateActor = (req, res) => {
   });
 };
 
-const deleteActor = (req, res) => {
+const deleteSong = (req, res) => {
   const { id } = req.params;
   res.status(200).json({
     id,
@@ -48,9 +48,9 @@ const deleteActor = (req, res) => {
 };
 
 module.exports = {
-  createActor,
-  getAllActors,
-  getActorById,
-  updateActor,
-  deleteActor,
+  createSong,
+  getAllSongs,
+  getSongById,
+  updateSong,
+  deleteSong,
 };
