@@ -22,13 +22,20 @@ const getSingerById = (req, res) => {
   });
 };
 
-const createSinger = (req, res) => {
-  const data = req.body;
-  console.log("data >>>", data);
-  res.status(200).json({
-    success: true,
-    message: `${req.method} - Singer created`,
-  });
+const createSinger = async (req, res) => {
+  try {
+    const singer = await Singers.create(req.body);
+
+    res.status(201).json({
+      success: true,
+      data: singer,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
 };
 
 const updateSinger = (req, res) => {
