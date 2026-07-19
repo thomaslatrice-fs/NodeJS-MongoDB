@@ -25,11 +25,6 @@ const singersSchema = new mongoose.Schema(
       type: Boolean,
       default: true,
     },
-    featuredSong: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Song",
-      required: [true, "A featured song is required"],
-    },
   },
   {
     timestamps: true,

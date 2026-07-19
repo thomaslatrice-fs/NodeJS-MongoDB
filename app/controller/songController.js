@@ -1,3 +1,5 @@
+const Songs = require("../models/Songs");
+
 const getAllSongs = async (req, res) => {
   try {
     res.status(200).json({

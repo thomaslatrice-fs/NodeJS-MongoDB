@@ -4,7 +4,7 @@ const getAllSingers = async (req, res) => {
   try {
     res.status(200).json({
       success: true,
-      message: `${req.methof} - Get all Singers`,
+      message: `${req.method} - Get all Singers`,
     });
   } catch (error) {
     res.status(500).json({

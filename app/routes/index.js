@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const singerRoutes = require("./singerRoutes");
-const actorRoutes = require("./actorRoutes");
+const songRoutes = require("./songRoutes");
 router.get("/", (req, res) => {
   res
     .status(200)
@@ -9,5 +9,5 @@ router.get("/", (req, res) => {
 });
 
 router.use("/singers", singerRoutes);
-router.use("/actors", actorRoutes);
+router.use("/songs", songRoutes);
 module.exports = router;

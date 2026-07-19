@@ -6,11 +6,11 @@ const {
   createSong,
   updateSong,
   deleteSong,
-} = require("../controller/actorController");
+} = require("../controller/songController");
 
 router.get("/", getAllSongs);
 
-router.get("/:id", getSongsById);
+router.get("/:id", getSongById);
 
 router.post("/", createSong);
 
