@@ -16,15 +16,29 @@ const getAllSongs = async (req, res) => {
     });
   }
 };
-const getSongById = (req, res) => {
-  const { id } = req.params;
-  res.status(200).json({
-    id,
-    success: true,
-    message: `${req.method} - request to Singer endpoint`,
-  });
-};
+const getSongById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const song = await Songs.findById(id);
 
+    if (!song) {
+      return res.status(404).json({
+        success: false,
+        message: "Song not found",
+      });
+    }
+    res.status(200).json({
+      id,
+      success: true,
+      data: song,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
 const createSong = async (req, res) => {
   try {
     const song = await Songs.create(req.body);
@@ -46,19 +60,35 @@ const updateSong = (req, res) => {
   res.status(200).json({
     id,
     success: true,
-    message: `${req.method} - Singer updated`,
+    message: `${req.method} - Song updated`,
   });
 };
 
-const deleteSong = (req, res) => {
-  const { id } = req.params;
-  res.status(200).json({
-    id,
-    success: true,
-    message: `${req.method} - Singer deleted`,
-  });
-};
+const deleteSong = async (req, res) => {
+  try {
+    const { id } = req.params;
 
+    const song = await Songs.findByIdAndDelete(id);
+
+    if (!song) {
+      return res.status(404).json({
+        success: false,
+        message: "Song not found",
+      });
+    }
+
+    return res.status(200).json({
+      success: true,
+      message: "Song deleted successfully",
+      data: song,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
 module.exports = {
   createSong,
   getAllSongs,
