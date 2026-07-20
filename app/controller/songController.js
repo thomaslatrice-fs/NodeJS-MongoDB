@@ -2,9 +2,12 @@ const Songs = require("../models/Songs");
 
 const getAllSongs = async (req, res) => {
   try {
+    const songs = await Songs.find();
+
     res.status(200).json({
       success: true,
-      message: `${req.methof} - Get all Singers`,
+      count: songs.length,
+      data: songs,
     });
   } catch (error) {
     res.status(500).json({
